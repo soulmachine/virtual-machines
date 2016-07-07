@@ -1,0 +1,48 @@
+{
+  "variables": {
+    "name": "ubuntu-16.04-desktop-amd64-idea"
+  },
+  "builders": [{
+    "name": "{{user `name`}}",
+    "vm_name": "{{user `name`}}",
+    "type": "vmware-vmx",
+    "headless": true,
+    "source_path": "../images/ubuntu-16.04-desktop-amd64/ubuntu-16.04-desktop-amd64.vmx",
+    "ssh_username": "programmer",
+    "ssh_password": "programmer123",
+    "shutdown_command": "sudo shutdown -P now",
+    "output_directory": "./{{user `name`}}",
+    "vmx_data": {
+      "displayname": "{{user `name`}}"
+    }
+  }],
+  "post-processors": [
+    {
+      "type": "compress",
+      "output": "{{.BuildName}}.zip",
+      "compression_level": 9
+    }
+  ],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "echo Packer tries to SSH into the instance ASAP but the instancece probabaly does not get enought time to initialize, the sleep makes sure that the OS properly initializes",
+      "sleep 20"
+    ]
+  }, {
+    "type": "shell",
+    "script": "./scripts/oracle-jdk.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/maven.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/intellij-idea.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/cleanup.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/shrink-disks.sh"
+  }]
+}
