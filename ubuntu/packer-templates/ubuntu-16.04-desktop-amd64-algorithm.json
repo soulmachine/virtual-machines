@@ -1,13 +1,13 @@
 {
   "variables": {
-    "name": "ubuntu-16.04-desktop-amd64"
+    "name": "ubuntu-16.04-desktop-amd64-algorithm"
   },
   "builders": [{
     "name": "{{user `name`}}",
     "vm_name": "{{user `name`}}",
     "type": "vmware-vmx",
     "headless": true,
-    "source_path": "../images/{{user `name`}}/{{user `name`}}.vmx",
+    "source_path": "../images/ubuntu-16.04-desktop-amd64-idea/ubuntu-16.04-desktop-amd64-idea.vmx",
     "ssh_username": "programmer",
     "ssh_password": "programmer123",
     "shutdown_command": "sudo shutdown -P now",
@@ -28,19 +28,28 @@
     "inline": [
       "echo Packer tries to SSH into the instance ASAP but the instancece probabaly does not get enought time to initialize, the sleep makes sure that the OS properly initializes",
       "sleep 20",
-      "sudo apt -qy  update"
+      "sudo apt -qy update"
     ]
   }, {
     "type": "shell",
-    "script": "./scripts/dist-upgrade-step-1.sh"
+    "inline": [
+      "sudo apt-get -qy install ruby"
+    ]
   }, {
     "type": "shell",
-    "script": "./scripts/dist-upgrade-step-2.sh",
-    "pause_before": "30s"
+    "script": "./scripts/scala.sh"
+  },{
+    "type": "shell",
+    "script": "./scripts/nodejs.sh"
+  },{
+    "type": "shell",
+    "script": "./scripts/mono.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/cleanup.sh",
-    "pause_before": "30s"
+    "script": "./scripts/intellij-clion.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/cleanup.sh"
   }, {
     "type": "shell",
     "script": "./scripts/shrink-disks.sh"

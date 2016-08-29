@@ -27,14 +27,17 @@
     "type": "shell",
     "inline": [
       "echo Packer tries to SSH into the instance ASAP but the instancece probabaly does not get enought time to initialize, the sleep makes sure that the OS properly initializes",
-      "sleep 20"
+      "sleep 20",
+      "sudo apt -qy update"
     ]
   }, {
     "type": "shell",
     "script": "./scripts/oracle-jdk.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/maven.sh"
+    "inline": [
+      "sudo apt -qy install maven"
+    ]
   }, {
     "type": "shell",
     "script": "./scripts/intellij-idea.sh"
