@@ -1,6 +1,6 @@
 {
   "variables": {
-    "name": "ubuntu-16.04-desktop-amd64-webstorm"
+    "name": "ubuntu-16.04-desktop-amd64-R"
   },
   "builders": [{
     "name": "{{user `name`}}",
@@ -27,30 +27,20 @@
     "type": "shell",
     "inline": [
       "echo Packer tries to SSH into the instance ASAP but the instancece probabaly does not get enought time to initialize, the sleep makes sure that the OS properly initializes",
-      "sleep 20",
-      "sudo apt -qy update"
+      "sleep 20"
     ]
+  }, {
+    "type": "shell",
+    "script": "./scripts/apt-update.sh"
   }, {
     "type": "shell",
     "script": "./scripts/oracle-jdk.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/nodejs.sh"
+    "script": "./scripts/maven.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/jetbrains-webstorm.sh"
-  }, {
-    "type": "shell",
-    "inline": [
-      "sudo apt-get -qy --no-install-recommends install chromium-browser"
-    ]
-  }, {
-    "type": "shell",
-    "inline": [
-      "echo Insatll essential npm packages",
-      "sudo npm install -g webpack webpack-dev-server",
-      "sudo npm install -g create-react-app"
-    ]
+    "script": "./scripts/intellij-idea.sh"
   }, {
     "type": "shell",
     "script": "./scripts/cleanup.sh"

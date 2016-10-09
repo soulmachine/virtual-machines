@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "#################### Cleanup ####################"
-sudo apt-get -qy clean
-sudo apt-get -qy autoremove
+sudo apt -qy autoremove
+sudo apt -qy clean
 sudo rm -rf /var/lib/apt/lists/*
 sudo rm -rf ~/Downloads/*
 sudo rm -rf /var/run/vmblock-fuse/blockdir/*/*

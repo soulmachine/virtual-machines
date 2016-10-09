@@ -1,13 +1,13 @@
 {
   "variables": {
-    "name": "ubuntu-16.04-desktop-amd64-webstorm"
+    "name": "ubuntu-16.04-desktop-amd64-scrapy"
   },
   "builders": [{
     "name": "{{user `name`}}",
     "vm_name": "{{user `name`}}",
     "type": "vmware-vmx",
     "headless": true,
-    "source_path": "../images/ubuntu-16.04-desktop-amd64/ubuntu-16.04-desktop-amd64.vmx",
+    "source_path": "../images/ubuntu-16.04-desktop-amd64-pycharm/ubuntu-16.04-desktop-amd64-pycharm.vmx",
     "ssh_username": "programmer",
     "ssh_password": "programmer123",
     "shutdown_command": "sudo shutdown -P now",
@@ -32,25 +32,7 @@
     ]
   }, {
     "type": "shell",
-    "script": "./scripts/oracle-jdk.sh"
-  }, {
-    "type": "shell",
-    "script": "./scripts/nodejs.sh"
-  }, {
-    "type": "shell",
-    "script": "./scripts/jetbrains-webstorm.sh"
-  }, {
-    "type": "shell",
-    "inline": [
-      "sudo apt-get -qy --no-install-recommends install chromium-browser"
-    ]
-  }, {
-    "type": "shell",
-    "inline": [
-      "echo Insatll essential npm packages",
-      "sudo npm install -g webpack webpack-dev-server",
-      "sudo npm install -g create-react-app"
-    ]
+    "script": "./scripts/scrapy.sh"
   }, {
     "type": "shell",
     "script": "./scripts/cleanup.sh"

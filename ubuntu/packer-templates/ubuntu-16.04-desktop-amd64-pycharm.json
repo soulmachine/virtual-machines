@@ -1,6 +1,6 @@
 {
   "variables": {
-    "name": "ubuntu-16.04-desktop-amd64-webstorm"
+    "name": "ubuntu-16.04-desktop-amd64-pycharm"
   },
   "builders": [{
     "name": "{{user `name`}}",
@@ -32,25 +32,10 @@
     ]
   }, {
     "type": "shell",
-    "script": "./scripts/oracle-jdk.sh"
+    "script": "./scripts/openjdk.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/nodejs.sh"
-  }, {
-    "type": "shell",
-    "script": "./scripts/jetbrains-webstorm.sh"
-  }, {
-    "type": "shell",
-    "inline": [
-      "sudo apt-get -qy --no-install-recommends install chromium-browser"
-    ]
-  }, {
-    "type": "shell",
-    "inline": [
-      "echo Insatll essential npm packages",
-      "sudo npm install -g webpack webpack-dev-server",
-      "sudo npm install -g create-react-app"
-    ]
+    "script": "./scripts/jetbrains-pycharm.sh"
   }, {
     "type": "shell",
     "script": "./scripts/cleanup.sh"
