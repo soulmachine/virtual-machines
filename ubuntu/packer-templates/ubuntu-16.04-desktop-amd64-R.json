@@ -34,7 +34,7 @@
     "script": "./scripts/apt-update.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/oracle-jdk.sh"
+    "script": "./scripts/openjdk.sh"
   }, {
     "type": "shell",
     "script": "./scripts/maven.sh"
