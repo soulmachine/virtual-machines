@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "#################### Install IntelliJ Idea ####################"
-wget https://download-cf.jetbrains.com/idea/ideaIC-2016.2.2.tar.gz -P ~/Downloads/
-sudo tar -zxf ~/Downloads/ideaIC-2016.2.2.tar.gz -C /opt
+wget https://download-cf.jetbrains.com/idea/ideaIC-2016.2.4.tar.gz -P ~/Downloads/
+sudo tar -zxf ~/Downloads/ideaIC-2016.2.4.tar.gz -C /opt
 rm ~/Downloads/*
 tmp_array=( /opt/idea-I* )
 path=${tmp_array[0]}

@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "#################### Install IntelliJ CLion ####################"
-wget https://download-cf.jetbrains.com/cpp/CLion-2016.2.1.tar.gz -P ~/Downloads/
-sudo tar -zxf ~/Downloads/CLion-2016.2.1.tar.gz -C /opt
+wget https://download-cf.jetbrains.com/cpp/CLion-2016.2.2.tar.gz -P ~/Downloads/
+sudo tar -zxf ~/Downloads/CLion-2016.2.2.tar.gz -C /opt
 rm ~/Downloads/*
 tmp_array=( /opt/clion-* )
 path=${tmp_array[0]}
