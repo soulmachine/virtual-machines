@@ -1,6 +1,9 @@
 #!/bin/bash
 echo "#################### Install Scrapy ####################"
-apt -qy update && apt -qy dist-upgrade && apt -qy --no-install-recommends install \
+# Install Scrapy
+# See http://scrapy.readthedocs.io/en/latest/intro/install.html#ubuntu-12-04-or-above
+# Also install some essential scrapy plugins such as scrapy-deltafetch
+sudo apt -qy update && sudo apt -qy dist-upgrade && sudo apt -qy --no-install-recommends install \
     build-essential \
     python3 \
     python3-dev \
@@ -10,11 +13,13 @@ apt -qy update && apt -qy dist-upgrade && apt -qy --no-install-recommends instal
     zlib1g-dev \
     libffi-dev \
     libssl-dev \
- && pip3 install --upgrade pip \
- && pip3 install setuptools wheel \
- && pip3 install scrapy \
- && apt -qy purge build-essential \
- && apt -qy autoremove \
- && apt -qy clean \
- && rm -rf /var/lib/apt/lists/*
+    libdb-dev \
+ && sudo pip3 install --upgrade pip \
+ && sudo pip3 install setuptools wheel \
+ && sudo pip3 install scrapy \
+ && sudo pip3 install scrapy-deltafetch \
+ && sudo apt -qy purge build-essential \
+ && sudo apt -qy autoremove \
+ && sudo apt -qy clean \
+ && sudo rm -rf /var/lib/apt/lists/*
 
