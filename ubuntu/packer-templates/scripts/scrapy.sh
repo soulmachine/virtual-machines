@@ -17,7 +17,9 @@ sudo apt -qy update && sudo apt -qy dist-upgrade && sudo apt -qy --no-install-re
  && sudo pip3 install --upgrade pip \
  && sudo pip3 install setuptools wheel \
  && sudo pip3 install scrapy \
+ && sudo pip3 install bsddb3 \
  && sudo pip3 install scrapy-deltafetch \
+ && sudo pip3 install pillow \
  && sudo apt -qy purge build-essential \
  && sudo apt -qy autoremove \
  && sudo apt -qy clean \

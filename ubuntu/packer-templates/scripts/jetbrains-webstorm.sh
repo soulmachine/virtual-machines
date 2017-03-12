@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "#################### Install JetBrains WebStorm ####################"
-webstorm_version="2016.2.3"
+webstorm_version="2016.3.4"
 wget https://download-cf.jetbrains.com/webstorm/WebStorm-${webstorm_version}.tar.gz -P ~/Downloads/
 if [ "$?" != 0 ]; then
   exit 1
