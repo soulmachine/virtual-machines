@@ -1,0 +1,33 @@
+{
+  "variables": {
+    "zerotier_network_id": "9bee8941b5d9bf47"
+  },
+  "builders": [{
+    "type": "lxd",
+    "name": "ubuntu-devcontainer",
+    "image": "ubuntu-lts-server-amd64-jupyterlab",
+    "output_image": "ubuntu-devcontainer",
+    "publish_properties": {
+      "description": "LXD Ubuntu Devcontainer image with Packer"
+    }
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "script": "./scripts/go.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/rust.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/nodejs.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/ethereum.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/zerotier.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/cleanup.sh"
+  }]
+}
