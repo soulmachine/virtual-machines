@@ -11,6 +11,7 @@ lxc launch ubuntu-devcontainer ubuntu-devcontainer-$username
 lxc exec ubuntu-devcontainer-$username -- useradd $username -u $(id -u) -m -s /bin/bash
 # grant password-less sudo
 lxc exec ubuntu-devcontainer-$username -- bash -ilc "echo \"$username ALL=(ALL) NOPASSWD:ALL\" > /etc/sudoers.d/$username"
+lxc exec ubuntu-devcontainer-$username -- usermod -aG docker $username
 
 # copy .gitconfig
 lxc exec ubuntu-devcontainer-$username -- cp /root/.gitconfig /home/$username/.gitconfig

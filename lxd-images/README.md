@@ -9,7 +9,9 @@ A devcontainer for software engineers.
 Edit the `variables` section of `ubuntu-devcontainer.json`, and run `packer build ubuntu-devcontainer.json` to build the image.
 First, launch a new container,
 
-### 2. Run `deploy.sh`
+### 2. Launch a container for a new user
+
+Run `./launch.sh`, enter the username and your ZeroTier network ID.
 
 ### 3. More Configuration
 

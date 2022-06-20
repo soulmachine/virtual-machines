@@ -10,18 +10,16 @@
   }],
   "provisioners": [{
     "type": "shell",
-    "script": "./scripts/dist-upgrade-step-1.sh"
-  }, {
-    "type": "shell",
-    "script": "./scripts/dist-upgrade-step-2.sh",
-    "pause_before": "3s"
-  }, {
-    "type": "shell",
     "script": "./scripts/commons.sh",
     "pause_before": "3s"
   }, {
     "type": "shell",
-    "script": "./scripts/cleanup.sh",
-    "pause_before": "3s"
+    "script": "./scripts/docker.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/zerotier.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/cleanup.sh"
   }]
 }

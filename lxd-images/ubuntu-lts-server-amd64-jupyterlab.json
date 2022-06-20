@@ -2,7 +2,7 @@
   "builders": [{
     "type": "lxd",
     "name": "ubuntu-lts-server-amd64-jupyterlab",
-    "image": "ubuntu:jammy",
+    "image": "ubuntu-lts-server-amd64",
     "output_image": "ubuntu-lts-server-amd64-jupyterlab",
     "publish_properties": {
       "description": "LXD Ubuntu JupyterLab image with Packer"
@@ -10,14 +10,9 @@
   }],
   "provisioners": [{
     "type": "shell",
-    "script": "./scripts/commons.sh"
+    "script": "./scripts/jupyterlab.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/jupyterlab.sh",
-    "pause_before": "3s"
-  }, {
-    "type": "shell",
-    "script": "./scripts/cleanup.sh",
-    "pause_before": "3s"
+    "script": "./scripts/cleanup.sh"
   }]
 }
