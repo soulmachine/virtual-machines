@@ -28,6 +28,8 @@ fi
 # configure ZeroTier
 if [ ! -z "$zerotier_network_id" ]
 then
+    # reset ZeroTier address, see https://zerotier.atlassian.net/wiki/spaces/SD/pages/327693/How+to+Clear+Reset+your+ZeroTier+Address
+    lxc exec ubuntu-devcontainer-$username -- bash -ilc "systemctl stop zerotier-one && rm /var/lib/zerotier-one/identity.* && systemctl start zerotier-one"
     lxc exec ubuntu-devcontainer-$username -- bash -ilc "zerotier-cli join $zerotier_network_id && zerotier-cli set $zerotier_network_id allowDNS=1"
 fi
 
