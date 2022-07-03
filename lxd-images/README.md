@@ -4,16 +4,9 @@ A devcontainer for software engineers.
 
 ## How to deploy a container for a new user
 
-### 1. Build the `ubuntu-devcontainer` image
-
-Edit the `variables` section of `ubuntu-devcontainer.json`, and run `packer build ubuntu-devcontainer.json` to build the image.
-First, launch a new container,
-
-### 2. Launch a container for a new user
-
 Run `./launch.sh`, enter the username and your ZeroTier network ID.
 
-### 3. More Configuration
+## More Configuration
 
 First, attach to the running container:
 
