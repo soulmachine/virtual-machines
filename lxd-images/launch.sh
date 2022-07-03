@@ -19,6 +19,9 @@ lxc exec ubuntu-devcontainer-$username -- usermod -aG docker $username
 lxc exec ubuntu-devcontainer-$username -- cp /root/.gitconfig /home/$username/.gitconfig
 lxc exec ubuntu-devcontainer-$username -- chown $username:$username /home/$username/.gitconfig
 
+# Generate SSH pub/priv key
+lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "ssh-keygen -t rsa -b 4096 -f /home/$username/.ssh/id_rsa -q -N ''"
+
 # Add SSH public key
 if [ ! -z "$ssh_pub_key" ]
 then
