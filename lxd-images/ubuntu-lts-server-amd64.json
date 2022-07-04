@@ -20,9 +20,6 @@
     "script": "./scripts/zerotier.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/vsls.sh"
-  }, {
-    "type": "shell",
     "script": "./scripts/cleanup.sh"
   }]
 }

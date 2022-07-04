@@ -12,6 +12,7 @@ apt -qy --no-install-recommends install \
     gpg-agent \
     htop \
     iputils-ping \
+    libssl-dev \
     locales \
     lsb-release \
     man \

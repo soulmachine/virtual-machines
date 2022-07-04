@@ -25,7 +25,7 @@ lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash 
 # Add SSH public key
 if [ ! -z "$ssh_pub_key" ]
 then
-    lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "mkdir ~/.ssh && echo $ssh_pub_key > ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+    lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "echo $ssh_pub_key > ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 fi
 
 # configure ZeroTier

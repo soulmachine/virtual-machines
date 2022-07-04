@@ -9,3 +9,4 @@ sudo rm -rf /var/run/vmblock-fuse/blockdir/*/*
 sudo rm -rf /var/cache/*.tar.gz
 sudo rm -rf /var/cache/*/*.tar.gz
 history -cw
+sudo apt update
