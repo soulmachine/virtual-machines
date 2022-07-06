@@ -12,6 +12,7 @@ apt -qy --no-install-recommends install \
     gpg-agent \
     htop \
     iputils-ping \
+    jq \
     libssl-dev \
     locales \
     lsb-release \
@@ -31,7 +32,7 @@ apt -qy --no-install-recommends install \
     tree \
     tzdata \
     unzip \
-    vim-tiny \
+    vim \
     wget \
     zip
 
