@@ -10,3 +10,5 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-mod
 
 echo "export RUSTUP_HOME=$RUSTUP_HOME" >> /etc/profile
 echo "export PATH=\$PATH:$CARGO_HOME/bin" >> /etc/profile
+
+/opt/rust/cargo/bin/cargo install cargo-edit

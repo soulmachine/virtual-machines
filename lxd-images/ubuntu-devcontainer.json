@@ -10,6 +10,12 @@
   }],
   "provisioners": [{
     "type": "shell",
+    "script": "./scripts/protobuf.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/zmq.sh"
+  }, {
+    "type": "shell",
     "script": "./scripts/go.sh"
   }, {
     "type": "shell",
