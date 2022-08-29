@@ -8,6 +8,7 @@ read -rep $'Please enther your ZeroTier network ID(default to empty):\n' zerotie
 echo "Deploying a new devcontainer for $username"
 
 lxc launch ubuntu-devcontainer ubuntu-devcontainer-$username
+lxc exec ubuntu-devcontainer-$username -- systemctl is-system-running --wait
 
 # create the new user
 lxc exec ubuntu-devcontainer-$username -- useradd $username -u $(id -u) -m -s /bin/bash
@@ -27,6 +28,12 @@ if [ ! -z "$ssh_pub_key" ]
 then
     lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "echo $ssh_pub_key > ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 fi
+
+# Activate conda base
+lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "sudo usermod -aG conda $username && /opt/anaconda3/bin/conda init && echo 'conda activate base' >> ~/.bashrc"
+# Configure jupyter
+lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "mkdir -p ~/.jupyter"
+lxc file push config/jupyter_lab_config.json ubuntu-devcontainer-$username/home/$username/.jupyter/jupyter_lab_config.json
 
 # configure ZeroTier
 if [ ! -z "$zerotier_network_id" ]

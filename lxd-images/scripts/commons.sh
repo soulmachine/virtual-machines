@@ -14,6 +14,9 @@ apt -qy --no-install-recommends install \
     iputils-ping \
     jq \
     libssl-dev \
+    linux-tools-common \
+    linux-tools-generic \
+    linux-cloud-tools-generic \
     locales \
     lsb-release \
     man \

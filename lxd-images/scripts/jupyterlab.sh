@@ -1,26 +1,34 @@
 #!/bin/bash
+# Docs:
+# * https://docs.anaconda.com/anaconda/install/multi-user/
+# * https://github.com/conda/conda/issues/9895
+# * https://medium.com/@pjptech/installing-anaconda-for-multiple-users-650b2a6666c6
+
 echo "#################### Install JupyterLab ####################"
-sudo apt update
+apt update
 
 export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
-export CONDA_HOME="/opt/conda"
+export CONDA_HOME="/opt/anaconda3"
 export PATH="${CONDA_HOME}/bin:${PATH}"
 # printf "export LANG=C.UTF-8\nexport LC_ALL=C.UTF-8\nexport PATH=\"/opt/conda/bin:\${PATH}\"\n" >> /etc/profile
 
-INSTALLER_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+INSTALLER_URL="https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh"
 
-echo "Installing Miniconda3" && \
+echo "##### Installing Anaconda3" && \
     wget -q $INSTALLER_URL -O ~/installer.sh && \
     /bin/bash ~/installer.sh -b -p ${CONDA_HOME} && \
     rm ~/installer.sh && \
-    ln -s ${CONDA_HOME}/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo ". ${CONDA_HOME}/etc/profile.d/conda.sh" >> /etc/profile && \
-    echo "conda activate base" >> /etc/profile && \
-    echo "Set conda-forge as primary channel to reduce conflicts." && \
+    eval "$(conda shell.bash hook)" && conda init && \
+    echo "conda activate base" >> /root/.bashrc && \
+    echo "##### Set conda-forge as primary channel to reduce conflicts." && \
     conda config --add channels conda-forge && \
-    conda update -y --all \
- && echo "Installing JupyterLab and necessary plugins" && \
+    conda update -y --all && \
+    echo "##### Switch to the new conda user" && \
+    adduser --gecos '' --no-create-home --disabled-login conda && \
+    chown -R conda:conda $CONDA_HOME && chmod -R u=rwX,g=rwX,o=rX $CONDA_HOME && \
+    sudo su conda && export PATH="$PATH:/opt/anaconda3/bin" \
+ && echo "##### Installing JupyterLab and necessary plugins" && \
     conda install nodejs -y -c conda-forge --repodata-fn=repodata.json && \
     conda install -y -c conda-forge \
     ipywidgets \
@@ -47,7 +55,7 @@ echo "Installing Miniconda3" && \
     jlpm cache clean && \
     npm cache clean --force && \
     nbdime config-git --enable --global \
- && echo "Installing necessary python libraries" && \
+ && echo "##### Installing necessary python libraries" && \
     conda install -y -c conda-forge \
     dask \
     matplotlib \
@@ -61,4 +69,4 @@ echo "Installing Miniconda3" && \
     statsmodels \
     tqdm \
  && conda update -y --all && conda clean -afy
- 
+

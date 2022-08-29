@@ -10,6 +10,9 @@
   }],
   "provisioners": [{
     "type": "shell",
+    "inline": ["systemctl is-system-running --wait"]
+  },{
+    "type": "shell",
     "script": "./scripts/protobuf.sh"
   }, {
     "type": "shell",
