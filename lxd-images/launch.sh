@@ -29,8 +29,8 @@ then
     lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "echo $ssh_pub_key > ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 fi
 
-# Activate conda base
-lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "sudo usermod -aG conda $username && /opt/anaconda3/bin/conda init && echo 'conda activate base' >> ~/.bashrc"
+# Configure conda
+lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "sudo usermod -aG conda $username && echo 'export CONDA_AUTO_ACTIVATE_BASE=false' >> ~/.bashrc && /opt/anaconda3/bin/conda init"
 # Configure jupyter
 lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "mkdir -p ~/.jupyter"
 lxc file push config/jupyter_lab_config.json ubuntu-devcontainer-$username/home/$username/.jupyter/jupyter_lab_config.json
