@@ -13,7 +13,7 @@
     "inline": ["systemctl is-system-running --wait"]
   }, {
     "type": "shell",
-    "script": "./scripts/jupyterlab.sh"
+    "script": "./scripts/jupyterlab_pip.sh"
   }, {
     "type": "shell",
     "script": "./scripts/cleanup.sh"

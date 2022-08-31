@@ -30,7 +30,7 @@ then
 fi
 
 # Configure conda
-lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "sudo usermod -aG conda $username && echo 'export CONDA_AUTO_ACTIVATE_BASE=false' >> ~/.bashrc && /opt/anaconda3/bin/conda init"
+# lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "sudo usermod -aG conda $username && echo 'export CONDA_AUTO_ACTIVATE_BASE=false' >> ~/.bashrc && /opt/anaconda3/bin/conda init"
 # Configure jupyter
 lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "mkdir -p ~/.jupyter"
 lxc file push config/jupyter_lab_config.json ubuntu-devcontainer-$username/home/$username/.jupyter/jupyter_lab_config.json

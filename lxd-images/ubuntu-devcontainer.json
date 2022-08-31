@@ -25,9 +25,6 @@
     "script": "./scripts/rust.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/nodejs.sh"
-  }, {
-    "type": "shell",
     "script": "./scripts/ethereum.sh"
   }, {
     "type": "shell",
