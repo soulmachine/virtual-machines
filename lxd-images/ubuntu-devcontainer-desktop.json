@@ -1,0 +1,21 @@
+{
+  "builders": [{
+    "type": "lxd",
+    "name": "ubuntu-devcontainer-desktop",
+    "image": "ubuntu-devcontainer",
+    "output_image": "ubuntu-devcontainer-desktop",
+    "publish_properties": {
+      "description": "LXD Ubuntu Devcontainer with xfce4 desktop"
+    }
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": ["systemctl is-system-running --wait"]
+  },{
+    "type": "shell",
+    "script": "./scripts/xfce.sh"
+  }, {
+    "type": "shell",
+    "script": "./scripts/cleanup.sh"
+  }]
+}

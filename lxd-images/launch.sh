@@ -7,7 +7,7 @@ read -rep $'Please enther your ZeroTier network ID(default to empty):\n' zerotie
 
 echo "Deploying a new devcontainer for $username"
 
-lxc launch ubuntu-devcontainer ubuntu-devcontainer-$username
+lxc launch ubuntu-devcontainer-desktop ubuntu-devcontainer-$username
 lxc exec ubuntu-devcontainer-$username -- systemctl is-system-running --wait
 
 # create the new user
