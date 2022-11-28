@@ -12,6 +12,8 @@ lxc exec ubuntu-devcontainer-$username -- systemctl is-system-running --wait
 
 # create the new user
 lxc exec ubuntu-devcontainer-$username -- useradd $username -u $(id -u) -m -s /bin/bash
+# set password to 'passw0rd' for RDP
+lxc exec ubuntu-devcontainer-$username -- usermod --password $(echo passw0rd | openssl passwd -1 -stdin) $username
 # grant password-less sudo
 lxc exec ubuntu-devcontainer-$username -- bash -ilc "echo \"$username ALL=(ALL) NOPASSWD:ALL\" > /etc/sudoers.d/$username"
 lxc exec ubuntu-devcontainer-$username -- usermod -aG docker $username
