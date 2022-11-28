@@ -13,4 +13,6 @@ sudo systemctl enable xrdp
 sudo add-apt-repository -y ppa:savoury1/chromium
 sudo apt update
 sudo apt install -qy chromium-browser
+# Install Chinese fonts so that chromium can display Chinese websites properly
+sudo apt install -qy fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
 
