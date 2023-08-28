@@ -37,6 +37,9 @@ fi
 lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "mkdir -p ~/.jupyter"
 lxc file push config/jupyter_lab_config.json ubuntu-devcontainer-$username/home/$username/.jupyter/jupyter_lab_config.json
 
+# Intall Rust
+lxc exec ubuntu-devcontainer-$username --user $(id -u) --group $(id -g) -- bash -ilc "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --default-toolchain nightly --component rust-src --component rust-analyzer"
+
 # configure ZeroTier
 if [ ! -z "$zerotier_network_id" ]
 then

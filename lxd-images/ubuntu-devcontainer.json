@@ -22,9 +22,6 @@
     "script": "./scripts/go.sh"
   }, {
     "type": "shell",
-    "script": "./scripts/rust.sh"
-  }, {
-    "type": "shell",
     "script": "./scripts/ethereum.sh"
   }, {
     "type": "shell",
